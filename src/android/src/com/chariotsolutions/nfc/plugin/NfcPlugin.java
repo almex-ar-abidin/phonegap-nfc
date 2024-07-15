@@ -270,7 +270,7 @@ public class NfcPlugin extends CordovaPlugin {
                 Ndef ndef = Ndef.get(tag);
                 json = Util.ndefToJSON(ndef);
             } else {
-                json = Util.tagToJSON(tag, null);
+                json = Util.tagToJSON(tag);
             }
 
             Intent tagIntent = new Intent();
@@ -690,11 +690,11 @@ public class NfcPlugin extends CordovaPlugin {
     }
 
     private void fireNdefFormatableEvent(Tag tag) {
-        sendEvent(NDEF_FORMATABLE, Util.tagToJSON(tag, null));
+        sendEvent(NDEF_FORMATABLE, Util.tagToJSON(tag));
     }
 
     private void fireTagEvent(Tag tag, Parcelable[] messages) {
-        sendEvent(TAG_DEFAULT, Util.tagToJSON(tag, messages));
+        sendEvent(TAG_DEFAULT, Util.tagToJSON(tag));
     }
 
     private JSONObject buildNdefJSON(Ndef ndef, Parcelable[] messages) {
